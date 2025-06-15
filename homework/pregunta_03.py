@@ -15,3 +15,16 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+    x =  open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
+    x = [z.replace('\n','') for z in x]
+    x = [z.split("\t") for z in x]
+    y = [(fila[0], int(fila[1])) for fila in x]
+    conteo = {}
+
+    for letra, valor in y:
+        if letra in conteo:
+            conteo[letra] += valor
+        else:
+            conteo[letra] = valor
+    return sorted(conteo.items())
+

@@ -14,3 +14,10 @@ def pregunta_01():
     214
 
     """
+    x =  open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
+    x = [z.replace('\n','') for z in x]
+    x = [z.split("\t") for z in x]
+    y = [z[1] for z in x[:]]
+    numeros = [int(x) for x in y]
+    suma = sum(numeros)
+    return suma
