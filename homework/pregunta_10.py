@@ -20,3 +20,15 @@ def pregunta_10():
 
 
     """
+    x = open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
+    x = [z.strip().split("\t") for z in x]
+    resultado = []
+
+    for fila in x:
+        letra = fila[0]
+        col_4_count = len(fila[3].split(","))
+        col_5_count = len(fila[4].split(","))
+
+        resultado.append((letra, col_4_count, col_5_count))
+
+    return resultado

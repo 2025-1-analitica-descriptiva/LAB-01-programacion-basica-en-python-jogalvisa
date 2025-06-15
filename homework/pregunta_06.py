@@ -26,3 +26,21 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+    x =  open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
+    x = [z.replace('\n','') for z in x]
+    x = [z.split("\t") for z in x]
+    y = [fila[4].split(",") for fila in x]
+    y = [[par.split(":") for par in fila] for fila in y]
+    valores_por_clave = {}
+    for fila in y:
+        for clave, valor in fila:
+            valor = int(valor)
+            if clave in valores_por_clave:
+                valores_por_clave[clave].append(valor)
+            else:
+                valores_por_clave[clave] = [valor]
+    resultado = []
+    for clave in sorted(valores_por_clave.keys()):
+        valores = valores_por_clave[clave]
+        resultado.append((clave, min(valores), max(valores)))
+    return resultado

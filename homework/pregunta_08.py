@@ -27,3 +27,20 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+    x =  open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
+    x = [z.replace('\n','') for z in x]
+    x = [z.split("\t") for z in x]
+    x = [(fila[0], int(fila[1])) for fila in x]
+    agrupado = {}
+
+    for fila in x:
+        letra = fila[0]
+        numero = int(fila[1])
+
+        if numero in agrupado:
+            agrupado[numero].add(letra)
+        else:
+            agrupado[numero] = {letra}
+    resultado = sorted((numero, sorted(list(letras))) for numero, letras in agrupado.items())
+
+    return resultado

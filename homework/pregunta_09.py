@@ -24,3 +24,18 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    x =  open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
+    x = [z.strip().split("\t") for z in x]
+    conteo = {}
+
+    for fila in x:
+        columna_5 = fila[4]  
+        pares = columna_5.split(",")  
+
+        for par in pares:
+            clave, _ = par.split(":")  
+            if clave in conteo:
+                conteo[clave] += 1  
+            else:
+                conteo[clave] = 1  
+    return conteo

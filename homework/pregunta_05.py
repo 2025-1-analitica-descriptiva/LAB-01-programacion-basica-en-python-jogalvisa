@@ -15,3 +15,17 @@ def pregunta_05():
     [('A', 9, 2), ('B', 9, 1), ('C', 9, 0), ('D', 8, 3), ('E', 9, 1)]
 
     """
+    x =  open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
+    x = [z.replace('\n','') for z in x]
+    x = [z.split("\t") for z in x]
+    x = [(fila[0], int(fila[1])) for fila in x]
+    max_min = {}
+
+    for letra, valor in x:
+        valor = int(valor)
+        if letra in max_min:
+            max_min[letra].append(valor)
+        else:
+            max_min[letra] = [valor]
+    resultado = [(letra, max(valores), min(valores)) for letra, valores in max_min.items()]
+    return sorted(resultado)

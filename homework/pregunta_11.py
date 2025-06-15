@@ -16,3 +16,19 @@ def pregunta_11():
 
 
     """
+
+    x = open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
+    x = [z.strip().split("\t") for z in x]
+
+    suma_por_letra = {}
+
+    for fila in x:
+        numero = int(fila[1])
+        letras = fila[3].split(",")
+
+        for letra in letras:
+            if letra in suma_por_letra:
+                suma_por_letra[letra] += numero
+            else:
+                suma_por_letra[letra] = numero
+    return dict(sorted(suma_por_letra.items()))
