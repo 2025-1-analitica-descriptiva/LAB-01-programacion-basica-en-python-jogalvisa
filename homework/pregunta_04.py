@@ -26,15 +26,14 @@ def pregunta_04():
      ('12', 3)]
 
     """
-    x =  open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
-    x = [z.replace('\n','') for z in x]
-    x = [z.split("\t") for z in x]
-    y = [fila[2].split("-")[1] for fila in x]
-    conteo = {}
-    for mes in y:
-        if mes in conteo:
-            conteo[mes] += 1 
-        else:
-            conteo[mes] = 1
-    z = sorted(conteo.items())
-    return z
+    registros = {}
+    with open('./files/input/data.csv', 'r') as file:
+        for line in file:
+            data = line.split()
+            mes = data[2].split('-')[1]
+            if mes in registros:
+                registros[mes] += 1
+            else:
+                registros[mes] = 1
+        registros = sorted(registros.items(), key=lambda x: x[0])
+    return registros

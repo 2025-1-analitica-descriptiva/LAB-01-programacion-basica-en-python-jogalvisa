@@ -26,9 +26,8 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
-    x =  open('D:\\Datos\\Documents\\CLASE ANALITICA DESCRIPTIVA\\LAB-01-programacion-basica-en-python-jogalvisa\\files\\input\\data.csv', 'r').readlines()
-    x = [z.replace('\n','') for z in x]
-    x = [z.split("\t") for z in x]
+    with open("files/input/data.csv", encoding="utf-8") as f:
+        x = [line.strip().split('\t') for line in f]
     y = [fila[4].split(",") for fila in x]
     y = [[par.split(":") for par in fila] for fila in y]
     valores_por_clave = {}
